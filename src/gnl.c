@@ -51,7 +51,7 @@ char	*set_line(char **backup)
 		return (NULL);
 	while ((*backup)[i] != '\n' && (*backup)[i] != '\0')
 		i++;
-	line = ft_substr(*backup, 0, i + ((*backup)[i] == '\n'));
+	line = ft_substr(*backup, 0, i);
 	if ((*backup)[i] == '\n')
 		new_backup = ft_strdup(*backup + i + 1);
 	else
@@ -82,4 +82,25 @@ char	*get_next_line(int fd)
 		backup = NULL;
 	}
 	return (line);
+}
+
+int	count_lines(char *file)
+{
+	int		fd;
+	int		lines;
+	char	*line;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	lines = 0;
+	line = ft_strdup("");
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		lines++;
+		free (line);
+	}
+	close (fd);
+	return (lines);
 }
