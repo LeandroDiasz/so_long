@@ -36,31 +36,40 @@ typedef struct	s_game
     int     moves;
 }				t_game;
 
-/* --- utils.c ---*/
+/*--- check_map.c ---*/
+int		check_elements(char **map);
+int		check_wall(char **map);
+int		check_rectangle(char **map);
+int		check_aux(char element, int *exit, int *player, int *collectibles);
+
+/*--- erro.c ---*/
 void	error_exit(const char *message);
-int		check_ber(const char *file);
-char	*get_next_line(int fd);
+
+/* --- utils.c ---*/
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
+
+
+/*--- gnl.c ---*/
+char	*fill_line(int fd, char *backup, char *buffer);
+char	*set_line(char **backup);
+char	*get_next_line(int fd);
 int		count_lines(char *file);
-int		check_accessibility(char **map);
-int		check_elements(char **map);
-int		check_wall(char **map);
-int		check_rectangle(char **map);
 
-
-
+/*--- flood_fill.c ---*/
+//int		check_accessibility(char **map);
 
 /*--- map.c ---*/
-char	**map_read(const char *file);
+char	**map_read(char *file);
 int		map_validate(char **map);
-void	map_free(char **map);
+//void	map_free(char **map);
+int		check_ber(const char *file);
 
 /*--- game.c ---*/
-void	game_start(t_game *game, char **av);
+void	game_start(t_game *game, char *file);
 
 /*--- events.c ---*/
 
