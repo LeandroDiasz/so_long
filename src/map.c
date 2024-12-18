@@ -12,12 +12,12 @@
 
 #include "../so_long.h"
 
-char	**map_read(const char *file)
+char	**map_read(char *file)
 {
 	int		fd;
 	int		i;
-	int		**map;
-	int		line;
+	char	**map;
+	char	*line;
 
 	if (!check_ber(file))
 			error_exit("Invalid extension. Use .ber\n");
@@ -43,11 +43,51 @@ char	**map_read(const char *file)
 	return (map);
 }
 
-void	map_free(char **map)
-{
-
-}
 int	map_validate(char **map)
 {
-	
+	if (!check_rectangle(map))
+    {
+        error_exit("Erro: The map is not rectangular.\n");
+        return (0);
+    }
+    if (!check_wall(map))
+    {
+        error_exit("Erro: The map is not surrounded by walls.\n");
+        return (0);
+    }
+    if (!check_elements(map))
+    {
+        error_exit("Erro: The map does not contain all required elements (P, C, E).\n");
+        return (0);
+    }
+	return (1);
+    /*if (!check_accessibility(map))
+    {
+        error_exit("Erro: Nem todos os colecionáveis ou a saída são acessíveis.\n");
+        return (0);
+    }
+    return (1);*/
+}
+
+/*void	map_free(char **map)
+{
+
+}*/
+
+int	check_ber(const char *file)
+{
+	int	i;
+	int	j;
+
+	if (file == NULL && ft_strlen(file) < 4)
+		error_exit("Error: null file or insufficient size");
+	i = ft_strlen(file) - 4;
+	j = 0;
+	while (".ber"[j])
+	{
+		if (file[i + j] != ".ber"[j])
+			return (0);
+		j++;
+	}
+	return (1);
 }
