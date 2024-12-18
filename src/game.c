@@ -12,12 +12,12 @@
 
 #include "../so_long.h"
 
-void	game_start(t_game *game, char **av)
+void	game_start(t_game *game, char *file)
 {
-	game->map = map_read(av[1]);
+	game->map = map_read(file);
 	if (!game->map)
 		error_exit("Error reading the map");
-	if(!map_validate(game->map));
+	if(!map_validate(game->map))
 		error_exit("Invalid map");
-	
+
 }
