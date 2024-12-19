@@ -38,22 +38,12 @@ int	check_wall(char **map)
 	i = 0;
 	while (map[0][i])
 	{
-		printf("map[0][%d] = %c\n", i, map[0][i]);
-		if (map[0][i] == '\n')
-		{
-			printf("tem um quebra linha");
-			return (0);
-		}
 		if (map[0][i] != '1')
-		{
-			printf("Erro: a primeira linha não está cheia de paredes.\n");
 			return (0);
-		}
 		i++;
 	}
 	j = 1;
-
-	while (map[j])
+	while (map[j + 1])
 	{
 		if (map[j][0] != '1' || map[j][(int)ft_strlen(map[j]) - 1] != '1')
 			return (0);
@@ -105,7 +95,7 @@ int	check_aux(char element, int *exit, int *player, int *collectibles)
 		(*collectibles)++;
 	else if (element == 'P')
 		(*player)++;
-	else if (element != '0' || element != '1')
+	else if (element != '0' && element != '1')
 		return (0);
 	return (1);
 }
