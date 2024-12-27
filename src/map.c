@@ -60,13 +60,12 @@ int	map_validate(char **map)
         error_exit("Erro: The map does not contain all required elements (P, C, E).\n");
         return (0);
     }
-	return (1);
-    /*if (!check_accessibility(map))
+    if (!check_accessibility(map))
     {
         error_exit("Erro: Nem todos os colecionáveis ou a saída são acessíveis.\n");
         return (0);
     }
-    return (1);*/
+    return (1);
 }
 
 /*void	map_free(char **map)
