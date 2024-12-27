@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-16 15:54:59 by ledias-d          #+#    #+#             */
-/*   Updated: 2024-12-16 15:54:59 by ledias-d         ###   ########.fr       */
+/*   Created: 2024/12/16 15:54:59 by ledias-d          #+#    #+#             */
+/*   Updated: 2024/12/26 21:21:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <fcntl.h>
+# include <fcntl.h>
 
 
 # define WALL 1
@@ -42,8 +42,15 @@ int		check_wall(char **map);
 int		check_rectangle(char **map);
 int		check_aux(char element, int *exit, int *player, int *collectibles);
 
+/*--- check_utils.c--c*/
+char	**dup_map(char **map);
+int     map_size(char **map);
+int     count_collectibles(char **map);
+int     validate_accessibility(char **map);
+
 /*--- erro.c ---*/
 void	error_exit(const char *message);
+void	free_matriz(char	**matriz);
 
 /* --- utils.c ---*/
 char	*ft_strchr(const char *s, int c);
@@ -59,8 +66,10 @@ char	*set_line(char **backup);
 char	*get_next_line(int fd);
 int		count_lines(char *file);
 
-/*--- flood_fill.c ---*/
-//int		check_accessibility(char **map);
+/*--- dfs.c ---*/
+int		check_accessibility(char **map);
+void	dfs(char **map, int x, int y, int *collectibles);
+int     find_player(char **map, int *x, int *y);
 
 /*--- map.c ---*/
 char	**map_read(char *file);
