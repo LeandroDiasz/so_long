@@ -15,21 +15,37 @@
 char	**map_read(char *file)
 {
 	int		fd;
-	int		i;
+	int		lines;
 	char	**map;
-	char	*line;
 
 	if (!check_ber(file))
-			error_exit("Invalid extension. Use .ber\n");
-	i = count_lines(file);
-	if (i <= 0)
+		error_exit("Invalid extension. Use .ber\n");
+	lines = count_lines(file);
+	if (lines <= 0)
 		return (NULL);
-	map = (char **)malloc(sizeof(char *) *(i + 1));
+	map = (char **)malloc(sizeof(char *) *(lines + 1));
 	if (!map)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
+	{
+		free_matriz(map);
 		return (NULL);
+	}
+	if (!map_generate(map, fd))
+	{
+		free_matriz(map);
+		return (NULL);
+	}
+	close (fd);
+	return (map);
+}
+
+char	**map_generate(char **map, int fd)
+{
+	char	*line;
+	int		i;
+
 	i = 0;
 	line = ft_strdup("");
 	while (line != NULL)
@@ -39,33 +55,33 @@ char	**map_read(char *file)
 		i++;
 	}
 	map[i] = NULL;
-	close (fd);
 	return (map);
 }
 
 int	map_validate(char **map)
 {
 	if (!check_rectangle(map))
-    {
-        error_exit("Erro: The map is not rectangular.\n");
-        return (0);
-    }
-    if (!check_wall(map))
-    {
-        error_exit("Erro: The map is not surrounded by walls.\n");
-        return (0);
-    }
-    if (!check_elements(map))
-    {
-        error_exit("Erro: The map does not contain all required elements (P, C, E).\n");
-        return (0);
-    }
-    if (!check_accessibility(map))
-    {
-        error_exit("Erro: Not all collectibles or exit are accessible.\n");
-        return (0);
-    }
-    return (1);
+	{
+		error_exit("Erro: The map is not rectangular.\n");
+		return (0);
+	}
+	if (!check_wall(map))
+	{
+		error_exit("Erro: The map is not surrounded by walls.\n");
+		return (0);
+	}
+	if (!check_elements(map))
+	{
+		error_exit("Erro: The map does not contain all \
+		required elements (P, C, E).\n");
+		return (0);
+	}
+	if (!check_accessibility(map))
+	{
+		error_exit("Erro: Not all collectibles or exit are accessible.\n");
+		return (0);
+	}
+	return (1);
 }
 
 int	check_ber(const char *file)
