@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:54:59 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/26 21:21:45 by leo              ###   ########.fr       */
+/*   Updated: 2024/12/27 21:50:48 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,32 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-
-# define WALL 1
-# define FLOOR 0
 # define BUFFER_SIZE 1024
 
-
-typedef struct	s_game
+typedef struct s_sprites
 {
-	void	*mlx;
-	void	*win;
-	char    **map;
-    int     player_x;
-    int     player_y;
-    int     collectibles;
-    int     moves;
-}				t_game;
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*collectible;
+	void	*exit;
+}	t_sprites;
+
+typedef struct		s_game
+{
+	void		*mlx;
+	void		*win;
+	char		**map;
+	int		map_width;
+	int		map_height;
+	int		sprite_width;
+	int		sprite_height;
+	int		player_x;
+	int		player_y;
+	int		collectibles;
+	int		moves;
+	t_sprites	sprites;
+}			t_game;
 
 /*--- check_map.c ---*/
 int		check_elements(char **map);
@@ -74,14 +84,18 @@ int     find_player(char **map, int *x, int *y);
 /*--- map.c ---*/
 char	**map_read(char *file);
 int		map_validate(char **map);
-//void	map_free(char **map);
 int		check_ber(const char *file);
 
 /*--- game.c ---*/
-void	game_start(t_game *game, char *file);
+int     game_start(t_game *game, char *file);
 
 /*--- events.c ---*/
 
 /*--- render.c ---*/
+void	render_map(t_game *game);
+void	render_tile(t_game *game, int x, int y, char tile);
+void	load_sprites(t_game *game);
+void	load_sprite(void **sprite, char *path, t_game *game);
+
 
 #endif
