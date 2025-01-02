@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:55:45 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/27 23:04:56 by leo              ###   ########.fr       */
+/*   Created: 2025-01-02 17:59:22 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-02 17:59:22 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main(int ac, char **av)
 {
-	t_game game;
-	
+	t_game	game;
+
 	if (ac != 2)
 	{
 		error_exit("Number of arguments invalid\n");
 		return (1);
 	}	
-	if(!game_start(&game, av[1]))
+	if (!game_start(&game, av[1]))
 		return (1);
 	game.mlx = mlx_init();
 	game.map_height = map_size(game.map);

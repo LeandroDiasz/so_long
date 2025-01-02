@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include "minilibx-linux/mlx.h"
 # include <stdio.h>
@@ -30,19 +30,19 @@ typedef struct s_sprites
 	void	*exit;
 }	t_sprites;
 
-typedef struct		s_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	char		**map;
-	int		map_width;
-	int		map_height;
-	int		sprite_width;
-	int		sprite_height;
-	int		player_x;
-	int		player_y;
-	int		collectibles;
-	int		moves;
+	int			map_width;
+	int			map_height;
+	int			sprite_width;
+	int			sprite_height;
+	int			player_x;
+	int			player_y;
+	int			collectibles;
+	int			moves;
 	t_sprites	sprites;
 }			t_game;
 
@@ -54,9 +54,9 @@ int		check_aux(char element, int *exit, int *player, int *collectibles);
 
 /*--- check_utils.c--c*/
 char	**dup_map(char **map);
-int     map_size(char **map);
-int     count_collectibles(char **map);
-int     validate_accessibility(char **map);
+int		map_size(char **map);
+int		count_collectibles(char **map);
+int		validate_accessibility(char **map);
 
 /*--- erro.c ---*/
 void	error_exit(const char *message);
@@ -69,7 +69,6 @@ size_t	ft_strlen(const char *s);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
 
-
 /*--- gnl.c ---*/
 char	*fill_line(int fd, char *backup, char *buffer);
 char	*set_line(char **backup);
@@ -79,15 +78,16 @@ int		count_lines(char *file);
 /*--- dfs.c ---*/
 int		check_accessibility(char **map);
 void	dfs(char **map, int x, int y, int *collectibles);
-int     find_player(char **map, int *x, int *y);
+int		find_player(char **map, int *x, int *y);
 
 /*--- map.c ---*/
 char	**map_read(char *file);
 int		map_validate(char **map);
 int		check_ber(const char *file);
+char	**map_generate(char **map, int fd);
 
 /*--- game.c ---*/
-int     game_start(t_game *game, char *file);
+int		game_start(t_game *game, char *file);
 
 /*--- events.c ---*/
 
@@ -96,6 +96,5 @@ void	render_map(t_game *game);
 void	render_tile(t_game *game, int x, int y, char tile);
 void	load_sprites(t_game *game);
 void	load_sprite(void **sprite, char *path, t_game *game);
-
 
 #endif

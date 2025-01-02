@@ -25,7 +25,8 @@ void	load_sprites(t_game *game)
 	load_sprite(&game->sprites.wall, "textures/wall_bomb.xpm", game);
 	load_sprite(&game->sprites.floor, "textures/floor_bomb.xpm", game);
 	load_sprite(&game->sprites.player, "textures/player_bomb.xpm", game);
-	load_sprite(&game->sprites.collectible, "textures/collectible_bomb.xpm", game);
+	load_sprite(&game->sprites.collectible, \
+	"textures/collectible_bomb.xpm", game);
 	load_sprite(&game->sprites.exit, "textures/door_bomb.xpm", game);
 }
 
@@ -45,7 +46,8 @@ void	render_tile(t_game *game, int x, int y, char tile)
 		sprite = game->sprites.exit;
 	else
 		return ;
-	mlx_put_image_to_window(game->mlx, game->win, sprite, x * game->sprite_width, y * game->sprite_height);
+	mlx_put_image_to_window(game->mlx, game->win, sprite, \
+	x * game->sprite_width, y * game->sprite_height);
 }
 
 void	render_map(t_game *game)

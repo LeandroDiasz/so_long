@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 21:58:44 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/26 21:18:44 by leo              ###   ########.fr       */
+/*   Created: 2025-01-02 17:58:00 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-02 17:58:00 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	dfs(char **map, int x, int y, int *collectibles)
 	if (map[x][y] == 'C')
 		(*collectibles)--;
 	map[x][y] = 'V';
-	dfs(map, x - 1, y, collectibles); //up
-	dfs(map, x + 1, y, collectibles); //down
-	dfs(map, x, y - 1, collectibles); //left
-	dfs(map, x, y + 1, collectibles); //right
+	dfs(map, x - 1, y, collectibles);
+	dfs(map, x + 1, y, collectibles);
+	dfs(map, x, y - 1, collectibles);
+	dfs(map, x, y + 1, collectibles);
 }
 
 int	find_player(char **map, int *x, int *y)

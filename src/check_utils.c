@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 20:40:25 by leo               #+#    #+#             */
-/*   Updated: 2024/12/26 21:19:34 by leo              ###   ########.fr       */
+/*   Created: 2025-01-02 17:57:48 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-02 17:57:48 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 int	map_size(char **map)
 {
 	int	i;
+
 	i = 0;
 	while (map[i])
 		i++;
-	return(i);
+	return (i);
 }
 
 char	**dup_map(char **map)
@@ -53,7 +54,7 @@ int	count_collectibles(char **map)
 	int	i;
 	int	j;
 	int	collectibles;
-	
+
 	collectibles = 0;
 	j = 0;
 	while (map[j])
@@ -66,16 +67,15 @@ int	count_collectibles(char **map)
 			i++;
 		}
 		j++;
-		
 	}
-	return (collectibles);	
+	return (collectibles);
 }
 
 int	validate_accessibility(char **map)
 {
 	int	i;
 	int	j;
-	
+
 	j = 0;
 	while (map[j])
 	{

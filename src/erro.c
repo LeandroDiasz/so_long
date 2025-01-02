@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   erro.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 19:41:48 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/26 21:21:56 by leo              ###   ########.fr       */
+/*   Created: 2025-01-02 17:58:17 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-02 17:58:17 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	error_exit(const char *message)
 	exit(EXIT_FAILURE);
 }
 
-void	free_matriz(char	**matriz)
+void	free_matriz(char **matriz)
 {
 	int	i;
-	
+
 	if (!matriz)
 		return ;
 	i = 0;
@@ -31,5 +31,5 @@ void	free_matriz(char	**matriz)
 		free(matriz[i]);
 		i++;
 	}
-	free (matriz);	
+	free (matriz);
 }

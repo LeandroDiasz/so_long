@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 15:13:46 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/27 21:59:55 by leo              ###   ########.fr       */
+/*   Created: 2025-01-02 17:58:46 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-02 17:58:46 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	game_start(t_game *game, char *file)
 		error_exit("Error reading the map");
 		return (0);
 	}
-	if(!map_validate(game->map))
+	if (!map_validate(game->map))
 	{
 		error_exit("Invalid map");
 		return (0);
