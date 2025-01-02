@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-12-17 15:11:01 by ledias-d          #+#    #+#             */
-/*   Updated: 2024-12-17 15:11:01 by ledias-d         ###   ########.fr       */
+/*   Created: 2024/12/17 15:11:01 by ledias-d          #+#    #+#             */
+/*   Updated: 2024/12/27 22:01:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,11 @@ int	map_validate(char **map)
     }
     if (!check_accessibility(map))
     {
-        error_exit("Erro: Nem todos os colecionáveis ou a saída são acessíveis.\n");
+        error_exit("Erro: Not all collectibles or exit are accessible.\n");
         return (0);
     }
     return (1);
 }
-
-/*void	map_free(char **map)
-{
-
-}*/
 
 int	check_ber(const char *file)
 {
