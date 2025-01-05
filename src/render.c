@@ -34,15 +34,15 @@ void	render_tile(t_game *game, int x, int y, char tile)
 {
 	void	*sprite;
 
-	if (tile == '1')
+	if (tile == WALL)
 		sprite = game->sprites.wall;
-	else if (tile == '0')
+	else if (tile == FLOOR)
 		sprite = game->sprites.floor;
-	else if (tile == 'P')
+	else if (tile == PLAYER)
 		sprite = game->sprites.player;
-	else if (tile == 'C')
+	else if (tile == COLLECT)
 		sprite = game->sprites.collectible;
-	else if (tile == 'E')
+	else if (tile == EXIT)
 		sprite = game->sprites.exit;
 	else
 		return ;
