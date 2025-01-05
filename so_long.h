@@ -18,8 +18,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "ft_printf/ft_printf.h"
 
 # define BUFFER_SIZE 1024
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER 'P'
+# define EXIT 'E'
+# define COLLECT 'C'
+# define WIN_NAME "so_long"
+
+#define ESC_KEY 65307
+#define KEY_ARROW_RIGHT 100
+#define KEY_ARROW_LEFT 97
+#define KEY_ARROW_UP 119
+#define KEY_ARROW_DOWN 115
 
 typedef struct s_sprites
 {
@@ -90,6 +105,10 @@ char	**map_generate(char **map, int fd);
 int		game_start(t_game *game, char *file);
 
 /*--- events.c ---*/
+int move_player(t_game *game, int new_x, int new_y);
+int	handle_close(t_game *game);
+int	handle_keypress(int keycode, t_game *game);
+int	verify_exit(t_game *game, char new_position, int collectibles);
 
 /*--- render.c ---*/
 void	render_map(t_game *game);
