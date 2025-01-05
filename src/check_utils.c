@@ -62,7 +62,7 @@ int	count_collectibles(char **map)
 		i = 0;
 		while (map[j][i])
 		{
-			if (map[j][i] == 'C')
+			if (map[j][i] == COLLECT)
 				collectibles++;
 			i++;
 		}
@@ -82,11 +82,13 @@ int	validate_accessibility(char **map)
 		i = 0;
 		while (map[j][i])
 		{
-			if (map[j][i] == 'E')
+			if (map[j][i] == EXIT)
 				return (0);
+			else if(map[j][i] == 'Q')
+				return (1);
 			i++;
 		}
 		j++;
 	}
-	return (i);
+	return (1);
 }

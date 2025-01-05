@@ -38,21 +38,21 @@ int	check_wall(char **map)
 	i = 0;
 	while (map[0][i])
 	{
-		if (map[0][i] != '1')
+		if (map[0][i] != WALL)
 			return (0);
 		i++;
 	}
 	j = 1;
 	while (map[j + 1])
 	{
-		if (map[j][0] != '1' || map[j][(int)ft_strlen(map[j]) - 1] != '1')
+		if (map[j][0] != WALL || map[j][(int)ft_strlen(map[j]) - 1] != WALL)
 			return (0);
 		j++;
 	}
 	i = 0;
 	while (map[j][i])
 	{
-		if (map[j][i] != '1')
+		if (map[j][i] != WALL)
 			return (0);
 		i++;
 	}
@@ -89,13 +89,13 @@ int	check_elements(char **map)
 
 int	check_aux(char element, int *exit, int *player, int *collectibles)
 {
-	if (element == 'E')
+	if (element == EXIT)
 		(*exit)++;
-	else if (element == 'C')
+	else if (element == COLLECT)
 		(*collectibles)++;
-	else if (element == 'P')
+	else if (element == PLAYER)
 		(*player)++;
-	else if (element != '0' && element != '1')
+	else if (element != FLOOR && element != WALL)
 		return (0);
 	return (1);
 }

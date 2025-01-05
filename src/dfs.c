@@ -29,6 +29,13 @@ int	check_accessibility(char **map)
 	}
 	collectibles = count_collectibles(map);
 	dfs(map_dup, player_x, player_y, &collectibles);
+	int i = 0;
+	while(map_dup[i])
+	{
+		printf("%s\n", map_dup[i]);
+		i++;
+	}
+	printf("%d\n", collectibles);
 	if (!validate_accessibility(map_dup) || collectibles > 0)
 	{
 		free_matriz(map_dup);
@@ -40,14 +47,17 @@ int	check_accessibility(char **map)
 
 void	dfs(char **map, int x, int y, int *collectibles)
 {
-	if (x < 0 || y < 0 || !map[x] || !map[x][y] || map[x][y] == '1')
+	if (x < 0 || y < 0 || !map[x] || !map[x][y] || map[x][y] == WALL)
 		return ;
-	if (map[x][y] == 'E' && *collectibles > 0)
+	if (map[x][y] == COLLECT)
+		(*collectibles)--;
+	if (map[x][y] == EXIT && *collectibles > 0)
+	{
+		map[x][y] = 'Q';
 		return ;
+	}
 	if (map[x][y] == 'V')
 		return ;
-	if (map[x][y] == 'C')
-		(*collectibles)--;
 	map[x][y] = 'V';
 	dfs(map, x - 1, y, collectibles);
 	dfs(map, x + 1, y, collectibles);
@@ -66,7 +76,7 @@ int	find_player(char **map, int *x, int *y)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'P')
+			if (map[i][j] == PLAYER)
 			{
 				*x = i;
 				*y = j;
