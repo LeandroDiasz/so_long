@@ -14,6 +14,11 @@
 
 int	game_start(t_game *game, char *file)
 {
+	int		player_x;
+	int		player_y;
+
+	player_x = 0;
+	player_y = 0;
 	game->map = map_read(file);
 	if (!game->map)
 	{
@@ -25,5 +30,12 @@ int	game_start(t_game *game, char *file)
 		error_exit("Invalid map");
 		return (0);
 	}
+	game->moves = 0;
+	game->map_height = map_size(game->map);
+	game->map_width = ft_strlen(game->map[0]);
+	game->collectibles = count_collectibles(game->map);
+	find_player(game->map, &player_x, &player_y);
+	game->player_x = player_x;
+	game->player_y = player_y;
 	return (1);
 }
