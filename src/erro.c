@@ -14,7 +14,6 @@
 
 void	error_exit(const char *message)
 {
-	perror("Error");
 	write(1, message, ft_strlen(message));
 	exit(EXIT_FAILURE);
 }
