@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ledias-d <ledias-d@student.42.rio>         #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 15:11:01 by ledias-d          #+#    #+#             */
-/*   Updated: 2024/12/27 22:01:12 by leo              ###   ########.fr       */
+/*   Created: 2025-01-05 22:23:20 by ledias-d          #+#    #+#             */
+/*   Updated: 2025-01-05 22:23:20 by ledias-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char	**map_generate(char **map, int fd)
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
+		if (!line || !ft_strlen(line) || ft_strlen(line) == 1)
+			error_exit("Error: The map has an empty line.\n");
 		map[i] = line;
 		i++;
 	}
@@ -89,14 +91,17 @@ int	check_ber(const char *file)
 	int	i;
 	int	j;
 
-	if (file == NULL && ft_strlen(file) < 4)
+	if (!file && ft_strlen(file) < 4)
 		error_exit("Error: null file or insufficient size");
 	i = ft_strlen(file) - 4;
 	j = 0;
 	while (".ber"[j])
 	{
 		if (file[i + j] != ".ber"[j])
+		{
+			ft_printf("Error: Invalid extension. Use .ber\n");
 			return (0);
+		}
 		j++;
 	}
 	return (1);
