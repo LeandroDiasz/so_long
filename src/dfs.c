@@ -29,13 +29,6 @@ int	check_accessibility(char **map)
 	}
 	collectibles = count_collectibles(map);
 	dfs(map_dup, player_x, player_y, &collectibles);
-	int i = 0;
-	while(map_dup[i])
-	{
-		printf("%s\n", map_dup[i]);
-		i++;
-	}
-	printf("%d\n", collectibles);
 	if (!validate_accessibility(map_dup) || collectibles > 0)
 	{
 		free_matriz(map_dup);
