@@ -51,7 +51,9 @@ char	**map_generate(char **map, int fd)
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
-		if (!line || !ft_strlen(line) || ft_strlen(line) == 1)
+		if (!line)
+			break ;
+		if(!ft_strlen(line) || ft_strlen(line) == 1)
 			error_exit("Error: The map has an empty line.\n");
 		map[i] = line;
 		i++;
@@ -86,23 +88,39 @@ int	map_validate(char **map)
 	return (1);
 }
 
-int	check_ber(const char *file)
+int	map_size(char **map)
 {
 	int	i;
-	int	j;
 
-	if (!file && ft_strlen(file) < 4)
-		error_exit("Error: null file or insufficient size");
-	i = ft_strlen(file) - 4;
-	j = 0;
-	while (".ber"[j])
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+char	**dup_map(char **map)
+{
+	char	**map_dup;
+	int		size;
+	int		i;
+
+	if (!map)
+		return (NULL);
+	size = map_size(map);
+	map_dup = (char **)malloc((size + 1) * sizeof(char *));
+	if (!map_dup)
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		if (file[i + j] != ".ber"[j])
+		map_dup[i] = ft_strdup(map[i]);
+		if (!map_dup[i])
 		{
-			ft_printf("Error: Invalid extension. Use .ber\n");
-			return (0);
+			free_matriz(map_dup);
+			return (NULL);
 		}
-		j++;
+		i++;
 	}
-	return (1);
+	map_dup[i] = NULL;
+	return (map_dup);
 }

@@ -99,3 +99,24 @@ int	check_aux(char element, int *exit, int *player, int *collectibles)
 		return (0);
 	return (1);
 }
+
+int	check_ber(const char *file)
+{
+	int	i;
+	int	j;
+
+	if (!file && ft_strlen(file) < 4)
+		error_exit("Error: null file or insufficient size");
+	i = ft_strlen(file) - 4;
+	j = 0;
+	while (".ber"[j])
+	{
+		if (file[i + j] != ".ber"[j])
+		{
+			ft_printf("Error: Invalid extension. Use .ber\n");
+			return (0);
+		}
+		j++;
+	}
+	return (1);
+}

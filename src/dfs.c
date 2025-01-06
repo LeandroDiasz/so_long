@@ -81,3 +81,47 @@ int	find_player(char **map, int *x, int *y)
 	}
 	return (0);
 }
+
+int	validate_accessibility(char **map)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (map[j][i] == EXIT)
+				return (0);
+			else if (map[j][i] == 'Q')
+				return (1);
+			i++;
+		}
+		j++;
+	}
+	return (1);
+}
+
+int	count_collectibles(char **map)
+{
+	int	i;
+	int	j;
+	int	collectibles;
+
+	collectibles = 0;
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (map[j][i] == COLLECT)
+				collectibles++;
+			i++;
+		}
+		j++;
+	}
+	return (collectibles);
+}
