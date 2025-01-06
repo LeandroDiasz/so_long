@@ -65,26 +65,14 @@ char	**map_generate(char **map, int fd)
 int	map_validate(char **map)
 {
 	if (!check_rectangle(map))
-	{
 		error_exit("Erro: The map is not rectangular.\n");
-		return (0);
-	}
 	if (!check_wall(map))
-	{
 		error_exit("Erro: The map is not surrounded by walls.\n");
-		return (0);
-	}
 	if (!check_elements(map))
-	{
 		error_exit("Erro: The map does not contain all \
 		required elements (P, C, E).\n");
-		return (0);
-	}
 	if (!check_accessibility(map))
-	{
 		error_exit("Erro: Not all collectibles or exit are accessible.\n");
-		return (0);
-	}
 	return (1);
 }
 
