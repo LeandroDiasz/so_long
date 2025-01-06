@@ -84,7 +84,7 @@ int	validate_accessibility(char **map)
 		{
 			if (map[j][i] == EXIT)
 				return (0);
-			else if(map[j][i] == 'Q')
+			else if (map[j][i] == 'Q')
 				return (1);
 			i++;
 		}
