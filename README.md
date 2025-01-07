@@ -77,3 +77,9 @@ Os critérios de validação incluem:
     ├── map_valid.ber   # Exemplo de mapa válido
     ├── map_invalid.ber # Exemplo de mapa inválido
     └── map_large.ber   # Exemplo de mapa grande
+
+## Screenshots
+
+Aqui está uma prévia do jogo em funcionamento:
+
+![Tela inicial do jogo](textures/tela_inicial.png)
