@@ -19,7 +19,7 @@ char	**map_read(char *file)
 	char	**map;
 
 	if (!check_ber(file))
-		error_exit("Invalid extension. Use .ber\n");
+		error_exit("Invalid extension. Use .ber\n", NULL);
 	lines = count_lines(file);
 	if (lines <= 0)
 		return (NULL);
@@ -47,16 +47,17 @@ char	**map_generate(char **map, int fd)
 	int		i;
 
 	i = 0;
-	line = ft_strdup("");
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
 		if(!ft_strlen(line) || ft_strlen(line) == 1)
-			error_exit("Error: The map has an empty line.\n");
+		{
+			free(line);
+			error_exit("Error: The map has an empty line.\n", map);
+		}
 		map[i] = line;
 		i++;
+		line = get_next_line(fd);
 	}
 	map[i] = NULL;
 	return (map);
@@ -65,14 +66,14 @@ char	**map_generate(char **map, int fd)
 int	map_validate(char **map)
 {
 	if (!check_rectangle(map))
-		error_exit("Erro: The map is not rectangular.\n");
+		error_exit("Erro: The map is not rectangular.\n", map);
 	if (!check_wall(map))
-		error_exit("Erro: The map is not surrounded by walls.\n");
+		error_exit("Erro: The map is not surrounded by walls.\n", map);
 	if (!check_elements(map))
 		error_exit("Erro: The map does not contain all \
-		required elements (P, C, E).\n");
+		required elements (P, C, E).\n", map);
 	if (!check_accessibility(map))
-		error_exit("Erro: Not all collectibles or exit are accessible.\n");
+		error_exit("Erro: Not all collectibles or exit are accessible.\n", map);
 	return (1);
 }
 
