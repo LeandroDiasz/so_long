@@ -23,7 +23,7 @@ char	**map_read(char *file)
 	lines = count_lines(file);
 	if (lines <= 0)
 		return (NULL);
-	map = (char **)malloc(sizeof(char *) *(lines + 1));
+	map = (char **)ft_calloc(lines + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
 	fd = open(file, O_RDONLY);
@@ -45,20 +45,25 @@ char	**map_generate(char **map, int fd)
 {
 	char	*line;
 	int		i;
+	int		flag;
 
+	flag = 0;
 	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if(!ft_strlen(line) || ft_strlen(line) == 1)
-		{
-			free(line);
-			error_exit("Error: The map has an empty line.\n", map);
-		}
+		if (!ft_strlen(line) || ft_strlen(line) == 1)
+			flag = 1;
 		map[i] = line;
 		i++;
 		line = get_next_line(fd);
 	}
+	if (flag)
+	{
+		free(line);
+		error_exit("Error: The map has an empty line.\n", map);
+	}
+	free (line);
 	map[i] = NULL;
 	return (map);
 }
