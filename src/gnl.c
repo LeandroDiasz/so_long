@@ -94,12 +94,12 @@ int	count_lines(char *file)
 	if (fd < 0)
 		return (-1);
 	lines = 0;
-	line = ft_strdup("");
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		line = get_next_line(fd);
 		lines++;
 		free (line);
+		line = get_next_line(fd);
 	}
 	close (fd);
 	return (lines);
