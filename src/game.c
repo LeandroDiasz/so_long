@@ -28,7 +28,7 @@ int	game_start(t_game *game, char *file)
 	game->map_height = map_size(game->map);
 	game->map_width = ft_strlen(game->map[0]);
 	game->collectibles = count_collectibles(game->map);
-	find_player(game->map, &player_x, &player_y);
+	find_player(game->map, &player_y, &player_x);
 	game->player_x = player_x;
 	game->player_y = player_y;
 	return (1);
