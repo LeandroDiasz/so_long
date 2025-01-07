@@ -111,7 +111,9 @@ void	load_sprites(t_game *game);
 void	load_sprite(void **sprite, char *path, t_game *game);
 
 /*--- erro.c ---*/
-void	error_exit(const char *message);
+void	error_exit(const char *message, char **to_free);
 void	free_matriz(char	**matriz);
+void 	free_game(t_game *game);
+void	free_images(t_game *game);
 
 #endif
