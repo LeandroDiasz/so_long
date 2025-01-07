@@ -21,9 +21,9 @@ int	game_start(t_game *game, char *file)
 	player_y = 0;
 	game->map = map_read(file);
 	if (!game->map)
-		error_exit("Error reading the map");
+		error_exit("Error reading the map", game->map);
 	if (!map_validate(game->map))
-		error_exit("Invalid map");
+		error_exit("Invalid map", game->map);
 	game->moves = 0;
 	game->map_height = map_size(game->map);
 	game->map_width = ft_strlen(game->map[0]);

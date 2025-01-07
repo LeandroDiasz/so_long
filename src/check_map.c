@@ -106,7 +106,7 @@ int	check_ber(const char *file)
 	int	j;
 
 	if (!file && ft_strlen(file) < 4)
-		error_exit("Error: null file or insufficient size");
+		error_exit("Error: null file or insufficient size", NULL);
 	i = ft_strlen(file) - 4;
 	j = 0;
 	while (".ber"[j])

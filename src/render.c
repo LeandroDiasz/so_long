@@ -17,7 +17,7 @@ void	load_sprite(void **sprite, char *path, t_game *game)
 	*sprite = mlx_xpm_file_to_image(game->mlx, path, \
 	&game->sprite_width, &game->sprite_height);
 	if (!(*sprite))
-		error_exit("Error: Failed to load sprite");
+		error_exit("Error: Failed to load sprite", NULL);
 }
 
 void	load_sprites(t_game *game)
