@@ -6,7 +6,7 @@ MLX = -Lminilibx-linux -lmlx_Linux -lXext -lX11 -lm minilibx-linux/libmlx.a $(FT
 FT_PRINTF_DIR = ft_printf
 FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
 
-SRC = src/main.c src/game.c src/map.c src/render.c src/events.c src/utils.c src/check_map.c src/dfs.c src/gnl.c src/erro.c
+SRC = src/main.c src/game.c src/map.c src/render.c src/events.c src/utils.c src/check_map.c src/dfs.c src/gnl.c src/erro.c src/calloc.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

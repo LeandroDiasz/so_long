@@ -64,6 +64,10 @@ typedef struct s_game
 /*--- game.c ---*/
 int		game_start(t_game *game, char *file);
 
+/*--- calloc.c ---*/
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+
 /*--- map.c ---*/
 char	**map_read(char *file);
 int		map_validate(char **map);
