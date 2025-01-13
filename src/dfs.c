@@ -49,6 +49,8 @@ void	dfs(char **map, int x, int y, int *collectibles)
 		map[x][y] = 'Q';
 		return ;
 	}
+	if (map[x][y] == 'Q')
+		return ;
 	if (map[x][y] == 'V')
 		return ;
 	map[x][y] = 'V';
