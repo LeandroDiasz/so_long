@@ -9,7 +9,7 @@ FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
-SRC = src/main.c src/game.c src/map.c src/render.c src/events.c src/utils.c src/check_map.c src/dfs.c src/gnl.c src/erro.c src/calloc.c
+SRC = src/main.c src/game.c src/map.c src/render.c src/events.c src/check_map.c src/dfs.c src/gnl.c src/erro.c 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
