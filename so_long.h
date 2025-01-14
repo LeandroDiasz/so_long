@@ -21,6 +21,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include "ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 # define BUFFER_SIZE 1024
 # define WALL '1'
@@ -64,9 +65,6 @@ typedef struct s_game
 /*--- game.c ---*/
 int		game_start(t_game *game, char *file);
 
-/*--- calloc.c ---*/
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
 
 /*--- map.c ---*/
 char	**map_read(char *file);
@@ -81,13 +79,6 @@ int		check_wall(char **map);
 int		check_rectangle(char **map);
 int		check_aux(char element, int *exit, int *player, int *collectibles);
 int		check_ber(const char *file);
-
-/* --- utils.c ---*/
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strjoin(const char *s1, const char *s2);
 
 /*--- gnl.c ---*/
 char	*fill_line(int fd, char *backup, char *buffer);
