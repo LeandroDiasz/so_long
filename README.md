@@ -71,8 +71,7 @@ Os critérios de validação incluem:
 │   ├── gnl.c           # Implementação da função get_next_line para leitura de arquivos
 │   ├── main.c          # Ponto de entrada do programa, inicializa o jogo e organiza os componentes
 │   ├── map.c           # Funções para manipulação e validação do mapa do jogo
-│   ├── render.c        # Funções responsáveis por renderizar elementos gráficos na tela
-│   └── utils.c         # Funções auxiliares para operações diversas
+│   └── render.c        # Funções responsáveis por renderizar elementos gráficos na tela
 └── maps/               # Mapas de exemplo
     ├── map_valid.ber   # Exemplo de mapa válido
     ├── map_invalid.ber # Exemplo de mapa inválido
